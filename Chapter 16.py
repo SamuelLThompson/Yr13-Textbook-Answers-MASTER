@@ -1,4 +1,4 @@
-class Point:
+class Point: # Adding a comment
     """ Point class represents and manipulates x,y coords. """
 
     def __init__(self, x=0, y=0):
