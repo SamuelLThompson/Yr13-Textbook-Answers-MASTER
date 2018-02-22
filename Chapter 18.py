@@ -175,4 +175,14 @@ def print_files(path, prefix = ""):
         if os.path.isdir(fullname):        # If a directory, recurse.
             print_files(fullname, prefix + "| ")
 
+def print_full_files(path):
+    dirlist = get_dirlist(path)
+    for f in dirlist:
+        fullname = os.path.join(path,f)
+        if os.path.isdir(fullname):
+            print_full_files(fullname)
+        else:
+            print(os.path.join(path,f))
+
+
 # EXERCISE 11 <ISSUES> ------------------------------------------------------------------
