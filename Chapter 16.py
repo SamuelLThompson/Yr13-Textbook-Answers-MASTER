@@ -63,98 +63,45 @@ class Rectangle:
 
 # EXERCISE 4 ---------------------------------------------------------------------------------------------------------
 
-    def pointTest(self, point):
-        fallsInRectangle = True
-
-        if point.x > self.width:
-            fallsInRectangle = False
-        elif point.x == self.width:
-            fallsInRectangle = False
-        elif point.x < self.corner.x:
-            fallsInRectangle = False
-        elif point.y > self.height:
-            fallsInRectangle = False
-        elif point.y == self.height:
-            fallsInRectangle = False
-        elif point.y < self.corner.y:
-            fallsInRectangle = False
-
-        print("Does point fall inside rectangle? ", fallsInRectangle)
-
-# EXERCISE 5 ---------------------------------------------------------------------------------------------------------
-
-    def pointTestTwo(self, point):
-
-        if point.x > self.width:
-            self.collision = False
-        elif point.x == self.width:
-            self.collision = False
-        elif point.x < self.corner.x:
-            self.collision = False
-        elif point.y > self.height:
-            self.collision = False
-        elif point.y == self.height:
-            self.collision = False
-        elif point.y < self.corner.y:
-            self.collision = False
+    def point_check(self,posn):
+        x=(posn.x)
+        y=(posn.y)
+        if x > (self.corner.x)  or x < (self.corner.x):
+            print('Outside')
         else:
-            self.collision = True
+            print('Inside')
+        if y > (self.corner.y)  or y < (self.corner.y):
+            print('Outside')
+        else:
+            print('Inside')
+# Exercise 5 ----------------------------------------------------
+    def colission_check(self,posn):
+        x=(posn.x)
+        y=(posn.y)
+        if x > (self.corner.x + self.width) and y > (self.corner.y + self.height):
+            print('no collision')
+        if x < (self.corner.x + self.width) and y < (self.corner.y + self.height):
+            print('no collision')
 
-    def collisionDetection(self, b2):
-        b1corners = []
-        b2corners = []
+    def same_coordinates(self, p1, p2):
+        return (p1.x == p2.x) and (p1.y == p2.y)
 
-        c1 = Point((self.corner.x + self.width), self.corner.y)
-        c2 = Point(self.corner.x, (self.corner.y + self.height))
-        c3 = Point((self.corner.x + self.width), (self.corner.y + self.height))
-        b1corners.append(self.corner)
-        b1corners.append(c1)
-        b1corners.append(c2)
-        b1corners.append(c3)
+    def __str__(self):
+        return  "({0}, {1}, {2})".format(self.corner, self.width, self.height)
 
-        c1 = Point((b2.corner.x + b2.width), b2.corner.y)
-        c2 = Point(b2.corner.x, (b2.corner.y + b2.height))
-        c3 = Point((b2.corner.x + b2.width), (b2.corner.y + b2.height))
-        b2corners.append(b2.corner)
-        b2corners.append(c1)
-        b2corners.append(c2)
-        b2corners.append(c3)
-
-        print(b1corners)
-        print(b2corners)
-
-        for i in range(4):
-            self.pointTestTwo(b2corners[i])
-            if self.collision == True:
-                print("Collision Detected")
-                break
-            else:
-                print("No Collision")
-
-        for i in range(4):
-            b2.pointTestTwo(b1corners[i])
-            if b2.collision == True:
-                print("Collision Detected")
-                break
-            else:
-                print("No Collision")
-
-b1 = Rectangle(Point(0, 0), 10, 20, False)
-b2 = Rectangle(Point(5, 5), 10, 20, False)
-print("box: ", b1)
-print("box2: ", b2)
-#p = Point(3, 4)
-#q = Point(10, 0)
-#r = Point(-30, 40)
-#s = Point(5, 40)
-
-#box.area()
-#box.perimeter()
-#box.flip()
-#print("box: ", box)
-#box.pointTest(p)
-#box.pointTest(q)
-#box.pointTest(r)
-#box.pointTest(s)
-
-b1.collisionDetection(b2)
+box = Rectangle(Point(0, 0), 100, 200)
+bomb = Rectangle(Point(100, 80), 5, 10)
+print("box: ", box)
+print("bomb: ", bomb)
+box.grow(25,-10)
+bomb.grow(-10,10)
+print("box: ", box)
+print("bomb: ", bomb)
+box.move(25,-10)
+bomb.move(-10,10)
+print("box: ", box)
+print("bomb: ", bomb)
+second_box=copy.copy(box)
+second_bomb=copy.deepcopy(bomb)
+box.area()
+box.point_check(Point(0,10))
