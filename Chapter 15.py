@@ -37,14 +37,11 @@ class Point:
 
     # EXERCISE 4 -----------------------------------------------------------------------------------------------------
 
-    def EquationOfLine(self, target):
-        """ Returns the gradient of the line with respect to the target """
-        self.m = ((self.y - target.y)/(self.x - target.x))
-        self.c = (self.m*(0-self.x)) + self.y
-        if self.c >= 0:
-            print("The Equation of this line is: ", "y =", self.m,"x +", self.c)
-        elif self.c < 0:
-            print("The Equation of this line is: ", "y =", self.m,"x ", self.c)
+    def get_line_to(self, point_2):
+        slope = (point_2.y - self.y) / (point_2.x - self.x)
+        y_intercept = slope * (-self.x) + self.y
+        tup = (slope, y_intercept)
+        return tup
 
 # EXERCISE 1 ---------------------------------------------------------------------------------------------------------
 
