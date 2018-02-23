@@ -76,6 +76,7 @@ class Rectangle:
             print('Inside')
             
 # Exercise 5 ---------------------------------------------------------------------------------------------------------
+    
     def colission_check(self,posn):
         x=(posn.x)
         y=(posn.y)
