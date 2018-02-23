@@ -5,6 +5,8 @@ class Point:
         """ Create a new point at the origin """
         self.x = x
         self.y = y
+        self.c = c
+        self.m = m
 
     def __str__(self):
         return "({0}, {1})".format(self.x, self.y)
@@ -89,8 +91,6 @@ p.EquationOfLine(q)
 MessageNumbers = ["0122163249", "0122161219", "0122154123", "0122453754", "0122334234", "0122123419"]
 MessageTimes = ["Now", "Now", "Now", "Now", "Now", "Now"]
 MessageText = ["Generic Text1", "Generic Text2", "Generic Text3", "Generic Text4", "Generic Text5", "Generic Text6"]
-
-# CLASS CODE ---------------------------------------------------------------------------------------------------------
 
 class SMS_Store:
     """ SMS_Store class acts as an inbox, a record of messages """
