@@ -5,8 +5,6 @@ class Point:
         """ Create a new point at the origin """
         self.x = x
         self.y = y
-        self.m = m
-        self.c = c
 
     def __str__(self):
         return "({0}, {1})".format(self.x, self.y)
@@ -40,6 +38,11 @@ class Point:
     def get_line_to(self, point_2):
         slope = (point_2.y - self.y) / (point_2.x - self.x)
         y_intercept = slope * (-self.x) + self.y
+        if y_intercept >= 0:
+            print("The Equation of this line is: ", "y =", slope,"x +", y_intercept)
+        elif y_intercept < 0:
+            print("The Equation of this line is: ", "y =", slope,"x ", y_intercept)
+        
         tup = (slope, y_intercept)
         return tup
 
