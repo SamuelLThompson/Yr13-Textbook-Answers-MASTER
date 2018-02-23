@@ -5,8 +5,6 @@ class Point:
         """ Create a new point at the origin """
         self.x = x
         self.y = y
-        self.c = c
-        self.m = m
 
     def __str__(self):
         return "({0}, {1})".format(self.x, self.y)
@@ -57,7 +55,7 @@ def distance(p, q):
     result = dsquared**0.5
     print("Distance between points = ", result)
 
-def CircleCenterCalculator(a, b, c, d):
+def CircleCenterCalculator(a, b, c, d):         # THIS ONE IS REALLLLLY BROKEN. NONE OF THE VARIABLES MATCH AT ALL
     a.EquationOfLine(b)
     c.EquationOfLine(d)
 
