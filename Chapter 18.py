@@ -41,21 +41,44 @@ def cesaro10(t, order, size, a, b, c, d):
 
 # EXERCISE 3 & 4 <ISSUES> ------------------------------------------------------------------
 
-def sierpinski(t, order, size):
-    if order == 0:
-        for i in range(3):
-            t.forward(size)
+def draw_sierpinski(length, depth):
+    if depth==0:
+        for i in range(0,3):
+            t.fd(length)
             t.left(120)
+
     else:
-        for angle in [size*2, 180, size, 60]:
-            sierpinski(t, order-1, size/3)
-            t.left(angle)
+        draw_sierpinski(length/2,depth-1)
+        t.fd(length/2)
+        draw_sierpinski(length/2,depth-1)
+        t.bk(length/2)
+        t.left(60)
+        t.fd(length/2)
+        t.right(60)
+        draw_sierpinski(length/2,depth-1)
+        t.left(60)
+        t.bk(length/2)
+        t.right(60)
 
-#wn = turtle.Screen()
+def colored_sierpinski(length, depth):
+    t.pencolor('red')
+    draw_sierpinski(length, depth)
+    t.fd(length)
+    t.pencolor('blue')
+    draw_sierpinski(length, depth)
+    t.pencolor('red')
+    t.bk(length)
+    t.left(60)
+    t.fd(length)
+    t.right(60)
+    t.pencolor('yellow')
+    draw_sierpinski(length, depth)
 
-#t = turtle.Turtle()
 
-#sierpinski(t, 1, 200)
+window = turtle.Screen()
+t = turtle.Turtle()
+colored_sierpinski(100,2)
+window.exitonclick()
 
 # EXERCISE 5 ------------------------------------------------------------------
 
