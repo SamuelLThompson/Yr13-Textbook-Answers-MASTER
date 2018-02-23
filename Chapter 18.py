@@ -7,13 +7,15 @@ def koch(t, order, size):
             for angle in [60, -120, 60, 0]:
                 koch(t, order-1, size/3)
                 t.left(angle)
-            
+
+                
 # EXERCISE 1 ------------------------------------------------------------------
 
 def koch_improved():
         for i in range(3):
             koch(t, 2, 400)
             t.right(120)
+
                 
 # EXERCISE 2 ------------------------------------------------------------------
 
@@ -40,6 +42,7 @@ def cesaro10(t, order, size, a, b, c, d):
 #    cesaro10(t, order, 200, a, b, c, d)
 #    t.right(90)
 
+
 # EXERCISE 3 ------------------------------------------------------------------
 
 def draw_sierpinski(length, depth):
@@ -60,7 +63,8 @@ def draw_sierpinski(length, depth):
         t.left(60)
         t.bk(length/2)
         t.right(60)
-             
+        
+        
 # EXERCISE 4 ------------------------------------------------------------------
         
 def colored_sierpinski(length, depth):
@@ -82,6 +86,7 @@ window = turtle.Screen()
 t = turtle.Turtle()
 colored_sierpinski(100,2)
 window.exitonclick()
+
 
 # EXERCISE 5 ------------------------------------------------------------------
 
@@ -107,6 +112,7 @@ def recursive_min(nxs):
 
 # recursive_min([[[-13, 7], 90], 2, [1, 100], 8, 6])
 
+
 # EXERCISE 6 ------------------------------------------------------------------
 
 def count(x, nxs):
@@ -127,21 +133,17 @@ def count(x, nxs):
 
 #count(2, [2, 9, [2, 1, 13, 2], 8, [2, 6]])
 
+
 # EXERCISE 7 <ISSUES> ------------------------------------------------------------------
 
 def flatten(nxs):
-    flattened_list = []
-    for e in nxs:
-        if type(e) == type([]):
-            val = flatten(e)
-        else:
-            val = e
-
-        flattened_list.append(e)
-
-    print(flattened_list)
-
-#flatten((2, [2, 9, [2, 1, 13, 2], 8, [2, 6]]))
+    if nxs == []:
+        return nxs
+    if isinstance(nxs[0], list):                            # The list is passed as an argument to a recursive function to flatten the list
+        return flatten(nxs[0]) + flatten(nxs[1:])           # the function is recursively called with the sublists as the parameters until the entire list is flattened.
+    return nxs[:1] + flatten(nxs[1:])
+nxs = ([["this",["a",["thing"],"a"],"is"],["a","easy"]])    # I tested all of the given nested lists, but I can only work one test at a time.
+print("Flattened list is: ",flatten(nxs))                   # The flattened list is passed through the function and printed.
 
 # EXERCISE 8 ------------------------------------------------------------------
 
@@ -163,6 +165,7 @@ def fib(n):
 #fib(2)
 #fib(10)
 
+
 # EXERCISE 9 ------------------------------------------------------------------
 
 import sys
@@ -174,6 +177,7 @@ def recursion_depth(number):
 #sys.getrecursionlimit()
 #sys.setrecursionlimit(15)
 #recursion_depth(10)
+
 
 # EXERCISE 10 <ISSUES> ------------------------------------------------------------------
 
@@ -209,5 +213,6 @@ def print_full_files(path):
             print_full_files(fullname)
         else:
             print(os.path.join(path,f))
+
 
 # EXERCISE 11 <ISSUES> ------------------------------------------------------------------
