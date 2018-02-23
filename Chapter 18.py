@@ -216,3 +216,28 @@ def print_full_files(path):
 
 
 # EXERCISE 11 <ISSUES> ------------------------------------------------------------------
+import os
+def get_dirlist(path): #Ex10
+    """
+      Return a sorted list of all entries in path.
+      This returns just the names, not the full path to the names.
+    """
+    dirlist = os.listdir(path)
+    dirlist.sort()
+    return dirlist
+
+def add_trash(path):
+    dirlist = get_dirlist(path)
+    for f in dirlist:
+        if os.path.isdir(os.path.join(path,f)):
+            add_trash(os.path.join(path,f))
+    trash_file = os.path.join(path,"trash.txt")
+    open(trash_file,'w')
+
+def remove_trash(path):
+    dirlist = get_dirlist(path)
+    for f in dirlist:
+        if os.path.isdir(os.path.join(path,f)):
+            remove_trash(os.path.join(path,f))
+        elif f == "trash.txt":
+            os.remove(os.path.join(path,"trash.txt"))
