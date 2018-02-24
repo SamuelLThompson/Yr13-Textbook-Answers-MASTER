@@ -32,52 +32,30 @@ class MyTime:
 
 # EXERCISE 2 (With the amendments possible with EXERCISE 3)------------------------------------------------------------
 
-    def between(self, t1, t2):
-        is_between = False
-        if self > t1 == False:
-            is_between = False
-        else:
-            if self > t2 == True:
-                is_between = False
-            elif self.to_seconds() == t2.to_seconds():
-                is_between == False
-            else:
-                is_between = True
-
-        print(is_between)
+    def between(self, time1, time2):
+        if (self.to_seconds() >= time1.to_seconds()) and (self.to_seconds() < time2.to_seconds()):
+            return True
+        if (self.to_seconds() >= time2.to_seconds()) and (self.to_seconds() < time1.to_seconds()):
+            return True
+        return False
 
 # EXERCISE 4 ----------------------------------------------------------------------------------------------------------
 
-    def increment(self, seconds):
-        totalsecs = self.to_seconds()
-        totalsecs += seconds
-        if totalsecs > 0:
-            self.hours = totalsecs // 3600
-            leftoversecs = totalsecs % 3600
-            self.minutes = leftoversecs // 60
-            self.seconds = leftoversecs % 60
-        else:
-            print("The resulting time is negative, modern science hasn't quite figured out what that even is yet so I'm afraid have to reject it.")
-
+    def increment(self,seconds):
+        return MyTime(0,0,self.to_seconds()+seconds)
+      
 t1 = MyTime(1, 15, 42)
 t2 = MyTime(3, 50, 30)
 obj = MyTime(2, 20, 53)
 
 # EXERCISE 1 ----------------------------------------------------------------------------------------------------------
 
-def between(obj, t1, t2):
-    is_between = False
-    if t1.after(obj) == True:
-        is_between = False
-    else:
-        if obj.after(t2) == True:
-            is_between = False
-        elif obj.to_seconds() == t2.to_seconds():
-            is_between == False
-        else:
-            is_between = True
-
-    print(is_between)
+def between(object, time1, time2):
+    if (object.to_seconds() >= time1.to_seconds()) and (object.to_seconds() < time2.to_seconds()):
+        return True
+    if (object.to_seconds() >= time2.to_seconds()) and (object.to_seconds() < time1.to_seconds()):
+        return True
+    return False
 
 between(obj, t1, t2)
 
