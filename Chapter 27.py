@@ -54,9 +54,23 @@ def print_tree_indented(tree, level=0):         # Weird and useless way to print
 
 # EXERCISE 2 -----------------------------------------------------------------------------------------------------------
 
-def create_token_list(expr):
-    import re                                       # Import the Regular Expression module
-    token_list = re.split("([^0-9])", expr)         # token_list is defined as everything in the expression, split up into unique elements
+def form_token_list(expression):
+    token_list = []
+    temp = ""
+    for x in range(len(expression)):
+        try:
+            temp += expression[x]
+            temp = int(temp)
+            temp = str(temp)
+        except:
+            if len(temp) != 1:
+                token_list.append(int(temp[:-1]))
+            token_list.append(temp[-1])
+            temp = ""
+    try:
+        token_list.append(int(temp))
+    except:
+        pass
     return token_list
 
 # ----------------------------------------------------------------------------------------------------------------------
